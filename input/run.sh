@@ -1,0 +1,1 @@
+mpirun -np 1 ./lmp_mpi -mdi "-name LMP -role DRIVER -method MPI" -log log.zundel -in in.19_200 : -np 1 python run.py -mdi "-name PYSCF -role ENGINE -method MPI" -pbc no

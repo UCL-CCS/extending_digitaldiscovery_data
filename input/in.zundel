@@ -1,0 +1,62 @@
+units           real
+atom_style      full
+
+pair_style      lj/cut/coul/long 12
+pair_modify     mix arithmetic
+
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  none
+improper_style  none
+
+kspace_style    pppm 1e-5
+
+read_data       data.19_200
+
+# QM atoms are IDs 1 to 7
+# MM atoms are remaining atoms
+
+group           qm_atoms id 1:7
+group           mm_atoms subtract all qm_atoms
+
+# remove bonds/angles between QM atoms
+# set charges to zero on QM atoms
+
+delete_bonds    qm_atoms multi remove special
+set             group qm_atoms charge 0.0
+
+neighbor        2.0 bin
+neigh_modify    delay 0 every 1 check yes
+
+# QMMM dynamics
+
+timestep        2.0
+
+# keep QM atoms fixed in space by setting their forces to zero
+
+#fix		fix1 qm_atoms setforce 0.0 0.0 0.0
+
+# apply NVE time integration to MM atoms only
+
+fix             fix2 mm_atoms nve
+
+# apply QM/MM coupling between the fixed QM atoms and mobile MM atoms
+
+fix             fix3 qm_atoms mdi/qmmm direct elements O H
+fix_modify      fix3 energy yes
+
+# thermo screen output
+
+thermo_style    custom step cpu temp ke evdwl ecoul epair emol elong &
+                f_fix3 pe etotal press
+thermo          1
+
+# dump all steps to .xyz with element (not numeric) labels
+
+dump		myDump all xyz 1 output.xyz
+labelmap	atom 1 O 2 H
+dump_modify	myDump types labels
+
+# run simulation
+
+run             9
