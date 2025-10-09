@@ -6,7 +6,7 @@
 # This file is adapted from LAMMPS (https://github.com/lammps/lammps/blob/develop/examples/QUANTUM/PySCF/pyscf_mdi.py)
 # Copyright 2003 Sandia Corporation – Licensed under GPLv2
 # Modified by Tom Bickley, 2024
-# The changes are from line 570 onwards, which relate to the PySCF and Nbed settings
+# The changes are from line 568 onwards, which relate to the PySCF and Nbed settings
 
 import sys,time
 
@@ -24,8 +24,6 @@ from pyscf.pbc.dft import RKS as RKS_pbc
 from nbed.driver import NbedDriver
 from nbed.ham_builder import HamiltonianBuilder
 from nbed.ham_converter import HamiltonianConverter
-
-import json
 import pickle
 from numbers import Number
 

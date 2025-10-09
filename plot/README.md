@@ -1,3 +1,3 @@
 # plot/
 
-This folder contains the data and scripts needed to plot Figure 9.
+This folder contains the data and script needed to plot Figure 9.
