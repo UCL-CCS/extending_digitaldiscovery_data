@@ -1,6 +1,6 @@
 # extending_digitaldiscovery_data
 
-This repository contains supplementary data for the publication "*Extending Quantum Computing through Subspace, Embedding and Classical Molecular Dynamics Techniques*", available on Digital Discovery and [arXiv](https://doi.org/10.48550/arXiv.2505.16796).
+This repository contains supplementary data for the publication "*Extending quantum computing through subspace, embedding and classical molecular dynamics techniques*", available on [Digital Discovery](https://doi.org/10.1039/D5DD00225G) and [arXiv](https://doi.org/10.48550/arXiv.2505.16796).
 
 The data is structured as follows:
 - `input/` - contains the input data and scripts required to run the QM/MM simulation presented in Section 5.
